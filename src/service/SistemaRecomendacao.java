@@ -25,11 +25,21 @@ public class SistemaRecomendacao {
         usuarios.putIfAbsent(nome, new Usuario(nome));
     }
 
-    public void curtirItem(String nome, Item item) {
+    public void adicionarItem(Item item) {
+        catalog.adicionarItem(item);
+    }
+
+    public void curtirItem(String nome, String itemId) {
         Usuario usuario = usuarios.get(nome);
 
         if (usuario == null) {
             throw new IllegalArgumentException("Usuário não encontrado: " + nome);
+        }
+
+        Item item = catalog.buscarPorId(itemId);
+
+        if (item == null) {
+            throw new IllegalArgumentException("Item não encontrado: " + itemId);
         }
 
         usuario.curtirItem(item);
