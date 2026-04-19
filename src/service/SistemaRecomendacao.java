@@ -1,8 +1,10 @@
 package service;
 
+import model.Item;
 import model.Usuario;
 import strategy.SimilaridadeStrategy;
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,7 +23,7 @@ public class SistemaRecomendacao {
         usuarios.putIfAbsent(nome, new Usuario(nome));
     }
 
-    public void curtirItem(String nome, String item) {
+    public void curtirItem(String nome, Item item) {
         Usuario usuario = usuarios.get(nome);
 
         if (usuario == null) {
@@ -31,14 +33,14 @@ public class SistemaRecomendacao {
         usuario.curtirItem(item);
     }
 
-    public List<String> recomendar(String nome) {
+    public List<Item> recomendar(String nome) {
         Usuario base = usuarios.get(nome);
 
         if (base == null) {
             throw new IllegalArgumentException("Usuário não encontrado: " + nome);
         }
 
-        Map<String, Double> ranking = new HashMap<>();
+        Map<Item, Double> ranking = new HashMap<>();
 
         for (Usuario outro : usuarios.values()) {
 
@@ -52,7 +54,7 @@ public class SistemaRecomendacao {
                 continue;
             }
 
-            for (String item : outro.getItensCurtidos()) {
+            for (Item item : outro.getItensCurtidos()) {
 
                 if (base.getItensCurtidos().contains(item)) {
                     continue;
@@ -67,7 +69,7 @@ public class SistemaRecomendacao {
 
         return ranking.entrySet()
                 .stream()
-                .sorted(Map.Entry.<String, Double>comparingByValue().reversed())
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
                 .map(Map.Entry::getKey)
                 .toList();
 

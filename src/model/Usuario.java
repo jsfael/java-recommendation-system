@@ -6,7 +6,7 @@ import java.util.Set;
 public class Usuario {
 
     private final String nome;
-    private final Set<String> itensCurtidos;
+    private final Set<Item> itensCurtidos;
 
     public Usuario(String nome) {
         this.nome = nome;
@@ -17,11 +17,11 @@ public class Usuario {
         return nome;
     }
 
-    public Set<String> getItensCurtidos() {
+    public Set<Item> getItensCurtidos() {
         return itensCurtidos;
     }
 
-    public void curtirItem(String item) {
+    public void curtirItem(Item item) {
         itensCurtidos.add(item);
     }
 }
