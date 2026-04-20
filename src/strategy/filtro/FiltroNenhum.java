@@ -5,7 +5,7 @@ import model.Usuario;
 
 import java.util.List;
 
-public class SemFiltro implements FiltroStrategy{
+public class FiltroNenhum implements FiltroStrategy{
 
     @Override
     public List<Item> filtrar(Usuario usuario, List<Item> candidatos) {

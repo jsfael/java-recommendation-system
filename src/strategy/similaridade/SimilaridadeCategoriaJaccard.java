@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class SimilaridadeJaccardCategoria implements SimilaridadeStrategy {
+public class SimilaridadeCategoriaJaccard implements SimilaridadeStrategy {
 
     @Override
     public double calcular(Usuario a, Usuario b) {

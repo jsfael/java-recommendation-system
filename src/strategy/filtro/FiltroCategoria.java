@@ -4,13 +4,12 @@ import model.Item;
 import model.Usuario;
 
 import java.util.List;
-import java.util.Objects;
 
-public class FiltrarPorCategoria implements FiltroStrategy {
+public class FiltroCategoria implements FiltroStrategy {
 
     private final String categoria;
 
-    public FiltrarPorCategoria(String categoria) {
+    public FiltroCategoria(String categoria) {
         if (categoria == null || categoria.isBlank()) {
             throw new IllegalArgumentException("Categoria inválida");
         }

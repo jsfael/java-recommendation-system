@@ -5,18 +5,21 @@ import model.Usuario;
 
 import java.util.Set;
 
-public class SimilaridadeDice implements SimilaridadeStrategy {
+public class SimilaridadeItemJaccard implements SimilaridadeStrategy {
+
     @Override
     public double calcular(Usuario a, Usuario b) {
         Set<Item> setA = a.getItensCurtidos();
         Set<Item> setB = b.getItensCurtidos();
 
-        if (setA.isEmpty() || setB.isEmpty()) return 0.0;
+        if (setA.isEmpty() && setB.isEmpty()) return 0.0;
 
         long intersecao = setA.stream()
                 .filter(setB::contains)
                 .count();
 
-        return (2.0 * intersecao) / (setA.size() + setB.size());
+        long uniao = setA.size() + setB.size() - intersecao;
+
+        return uniao == 0 ? 0.0 : (double) intersecao / uniao;
     }
 }
