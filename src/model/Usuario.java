@@ -1,6 +1,7 @@
 package model;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 public class Usuario {
@@ -28,5 +29,18 @@ public class Usuario {
         if (item == null) {
             throw new IllegalArgumentException("Item não pode ser nulo");
         }
-        itensCurtidos.add(item);    }
+        itensCurtidos.add(item);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Usuario usuario = (Usuario) o;
+        return Objects.equals(nome, usuario.nome);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(nome);
+    }
 }
