@@ -1,10 +1,6 @@
-package strategy;
+package strategy.similaridade;
 
-import model.Item;
 import model.Usuario;
-
-import java.util.HashSet;
-import java.util.Set;
 
 public class SimilaridadeIntersecao implements SimilaridadeStrategy{
 
