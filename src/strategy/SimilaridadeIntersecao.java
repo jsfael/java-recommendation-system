@@ -10,11 +10,10 @@ public class SimilaridadeIntersecao implements SimilaridadeStrategy{
 
     @Override
     public double calcular(Usuario a, Usuario b) {
-        Set<Item> intersecao = new HashSet<>(a.getItensCurtidos());
-
-        intersecao.retainAll(b.getItensCurtidos());
-
-        return intersecao.size();
+        return a.getItensCurtidos()
+                .stream()
+                .filter(b.getItensCurtidos()::contains)
+                .count();
     }
 
 }
