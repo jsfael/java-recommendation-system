@@ -1,6 +1,7 @@
 package service;
 
 import model.Item;
+import model.Recomendacao;
 import model.Usuario;
 import strategy.filtro.FiltroStrategy;
 import strategy.similaridade.SimilaridadeStrategy;
@@ -59,7 +60,7 @@ public class SistemaRecomendacao {
         usuario.curtirItem(item);
     }
 
-    public List<Item> recomendar(String nome) {
+    public List<Recomendacao> recomendar(String nome) {
         Usuario base = usuarios.get(nome);
 
         if (base == null) {
@@ -93,10 +94,10 @@ public class SistemaRecomendacao {
             }
         }
 
-        List<Item> recomendados = ranking.entrySet()
+        List<Recomendacao> recomendados = ranking.entrySet()
                 .stream()
                 .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
-                .map(Map.Entry::getKey)
+                .map(entry -> new Recomendacao(entry.getKey(), entry.getValue()))
                 .toList();
 
         return filtroStrategy.filtrar(base, recomendados);

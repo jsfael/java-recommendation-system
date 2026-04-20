@@ -1,6 +1,7 @@
 package strategy.filtro;
 
 import model.Item;
+import model.Recomendacao;
 import model.TipoItem;
 import model.Usuario;
 
@@ -15,11 +16,11 @@ public class FiltroTipo implements FiltroStrategy {
         Objects.requireNonNull(tipo, "Tipo não pode ser nulo");
         this.tipo = tipo;
     }
+
     @Override
-    public List<Item> filtrar(Usuario usuario, List<Item> candidatos) {
+    public List<Recomendacao> filtrar(Usuario usuario, List<Recomendacao> candidatos) {
         return candidatos.stream()
-                .filter(item -> item.getTipo() == tipo)
+                .filter(r -> r.item().getTipo() == tipo)
                 .toList();
     }
-
 }

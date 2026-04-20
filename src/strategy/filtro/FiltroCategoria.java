@@ -1,9 +1,11 @@
 package strategy.filtro;
 
 import model.Item;
+import model.Recomendacao;
 import model.Usuario;
 
 import java.util.List;
+
 
 public class FiltroCategoria implements FiltroStrategy {
 
@@ -17,9 +19,9 @@ public class FiltroCategoria implements FiltroStrategy {
     }
 
     @Override
-    public List<Item> filtrar(Usuario usuario, List<Item> candidatos) {
+    public List<Recomendacao> filtrar(Usuario usuario, List<Recomendacao> candidatos) {
         return candidatos.stream()
-                .filter(item -> item.getCategoria().toLowerCase().equals(categoria))
+                .filter(r -> r.item().getCategoria().toLowerCase().equals(categoria))
                 .toList();
     }
 }
