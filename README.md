@@ -54,7 +54,7 @@ Trocar o algoritmo ou o filtro não exige nenhuma mudança no `SistemaRecomendac
 
 ```java
 new SistemaRecomendacao(new SimilaridadeItemJaccard(), new FiltroTipo(TipoItem.FILME), catalog);
-new SistemaRecomendacao(new SimilaridadeItemDice(), new FiltroNenhum(), catalog);
+        new SistemaRecomendacao(new SimilaridadeItemDice(), new FiltroNenhum(), catalog);
 ```
 
 <br>
@@ -66,7 +66,7 @@ new SistemaRecomendacao(new SimilaridadeItemDice(), new FiltroNenhum(), catalog)
 Conta quantos itens dois usuários têm em comum. Simples e direto, sem normalização.
 
 <p align="center">
-        <img src="docs/images/Interseccao.png" alt="Interseção" loading="lazy" decoding="async" style="max-width: 100%; height: auto;" />
+  <img src="docs/images/Interseccao.png" width="350"/>
 </p>
 
 ```
@@ -87,7 +87,7 @@ return a.getItensCurtidos()
 Divide a interseção pela união. Dois usuários que curtiram os mesmos 2 filmes de um total de 2 são mais similares do que dois usuários que curtiram os mesmos 2 filmes de um total de 20.
 
 <p align="center">
-        <img src="docs/images/Jacoord.png" alt="Jaccard" loading="lazy" decoding="async" style="max-width: 100%; height: auto;" />
+  <img src="docs/images/Jacoord.png" width="350"/>
 </p>
 
 ```
@@ -111,7 +111,7 @@ return (double) intersecao / uniao;
 Similar ao Jaccard, mas dá mais peso à interseção. Penaliza menos usuários com perfis grandes.
 
 <p align="center">
-        <img src="docs/images/Dice.png" alt="Dice" loading="lazy" decoding="async" style="max-width: 100%; height: auto;" />
+  <img src="docs/images/Dice.png" width="350"/>
 </p>
 
 ```
@@ -133,7 +133,7 @@ return (2.0 * intersecao) / (setA.size() + setB.size());
 Ao invés de comparar itens diretamente, compara as categorias dos itens curtidos. Dois usuários que curtiram itens diferentes mas da mesma categoria ainda são considerados similares.
 
 <p align="center">
-        <img src="docs/images/Jaccord%202.png" alt="Jaccard por Categoria" loading="lazy" decoding="async" style="max-width: 80%; height: auto;" />
+  <img src="docs/images/Jaccord%202.png" width="350"/>
 </p>
 
 ```
@@ -156,10 +156,10 @@ Set<String> categoriasB = b.getItensCurtidos().stream()
 
 Os filtros são aplicados após o ranking e recebem o usuário base junto com a lista de candidatos, o que permite filtros que dependem do perfil do usuário.
 
-| Filtro            | Comportamento                                                           |
-| ----------------- | ----------------------------------------------------------------------- |
-| `FiltroNenhum`    | Retorna todos os candidatos sem modificação                             |
-| `FiltroTipo`      | Mantém apenas itens de um tipo específico (FILME, MUSICA, LIVRO)        |
+| Filtro | Comportamento |
+|---|---|
+| `FiltroNenhum` | Retorna todos os candidatos sem modificação |
+| `FiltroTipo` | Mantém apenas itens de um tipo específico (FILME, MUSICA, LIVRO) |
 | `FiltroCategoria` | Mantém apenas itens de uma categoria específica (acao, terror, rock...) |
 
 ```java
