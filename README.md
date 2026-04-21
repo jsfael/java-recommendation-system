@@ -133,7 +133,7 @@ return (2.0 * intersecao) / (setA.size() + setB.size());
 Ao invés de comparar itens diretamente, compara as categorias dos itens curtidos. Dois usuários que curtiram itens diferentes mas da mesma categoria ainda são considerados similares.
 
 <p align="center">
-        <img src="docs/images/Jaccord%202.png" alt="Jaccard por Categoria" loading="lazy" decoding="async" style="max-width: 100%; height: auto;" />
+        <img src="docs/images/Jaccord%202.png" alt="Jaccard por Categoria" loading="lazy" decoding="async" style="max-width: 80%; height: auto;" />
 </p>
 
 ```
