@@ -184,7 +184,3 @@ java -cp out app.Main
 `Main.java` é uma demo de teste. Ela monta um catálogo simples, cadastra usuários, simula curtidas e imprime as recomendações para cada combinação de algoritmo e filtro.
 
 <br>
-
-## Tecnologias
-
-Java 21, sem dependências externas.
